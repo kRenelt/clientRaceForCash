@@ -1,16 +1,59 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-import { Button, AppBar, Toolbar, IconButton, Menu, MenuItem } from '@material-ui/core';
+import { Button, AppBar, Toolbar, IconButton, Menu, MenuItem, Typography, makeStyles } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import './navbar.component.css';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
+  
 export const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
 
+    const classes = useStyles();
     const userName = (localStorage.getItem('userName')) ? localStorage.getItem('userName') : 'Guest';
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+   
     const logOutButton = () => {
         localStorage.clear();
         props.history.push('/login');
       }
+
+      const showLoginRegButton = () => {
+          console.log('username = ' + userName);
+        if(userName === 'Guest')
+        {
+            console.log('I am guest');
+            return (
+                <Button color="inherit"  onClick={() => props.history.push('registration') }>Registration</Button>
+            );
+        }
+        else{
+            return (
+                <Button color="inherit"  onClick={() => logOutButton()} >Log Out</Button>
+            );
+        }
+      }
+
+      const showStabelButton = () => {
+          if (userName !== 'Guest'){
+              return (
+                <MenuItem onClick={() => props.history.push('/stable')}>Stable</MenuItem>
+              );
+          }
+      }
+      
+      useEffect(() => {
+        showLoginRegButton();
+    }, []);
 
     return(
         <div className='navbar-main'>
@@ -24,8 +67,8 @@ export const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                     color="inherit"
                   >
                     <MenuIcon />
-                  </IconButton>
-                  <Menu
+             </IconButton>
+            <Menu
                     id="menu-appbar"
                     anchorEl={anchorEl}
                     anchorOrigin={{
@@ -40,14 +83,16 @@ export const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                     open={Boolean(anchorEl)}
                     onClose={() =>setAnchorEl(null)}
                   >
-                    <MenuItem onClick={() => props.history.push('/stable')}>Stable</MenuItem>
+                    {showStabelButton()}
                     <MenuItem onClick={() => props.history.push('/home')}>Races</MenuItem>
-                  </Menu>
-            Navbar
-            <div className="logOut"> 
-               <Button color="inherit"  onClick={() => logOutButton()} >Log Out</Button>
-               <Button color="inherit"  onClick={() => props.history.push('registration') }>Registration</Button>
-             </div>
+            </Menu>
+            <Typography variant="h6" className={classes.title}>
+                Welcome {userName}
+              </Typography>
+              <div className="logOut"> 
+                    {showLoginRegButton()}
+                </div>
+
              </Toolbar>
           </AppBar>
         </div>
