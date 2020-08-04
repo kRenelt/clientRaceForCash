@@ -2,6 +2,7 @@ import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { Button, AppBar, Toolbar, IconButton, Menu, MenuItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import './navbar.component.css';
 
 export const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
 
@@ -24,8 +25,8 @@ export const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                     color="inherit"
                   >
                     <MenuIcon />
-                  </IconButton>
-                  <Menu
+             </IconButton>
+            <Menu
                     id="menu-appbar"
                     anchorEl={anchorEl}
                     anchorOrigin={{
@@ -42,10 +43,12 @@ export const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                   >
                     <MenuItem onClick={() => props.history.push('/stable')}>Stable</MenuItem>
                     <MenuItem onClick={() => props.history.push('/home')}>Races</MenuItem>
-                  </Menu>
+            </Menu>
             Navbar
             <div className="logOut"> 
                <Button color="inherit"  onClick={() => logOutButton()} >Log Out</Button>
+               </div>
+               <div>
                <Button color="inherit"  onClick={() => props.history.push('registration') }>Registration</Button>
              </div>
              </Toolbar>
