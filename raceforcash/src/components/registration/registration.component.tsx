@@ -4,6 +4,7 @@ import { Form, Container, Row, Col, Button } from 'react-bootstrap';
 export const RegistrationComponent: React.FC = () => {
 
     const [inputEmail, setInputEmail] = useState('');
+    const [inputUsername, setInputUsername] = useState('');
     const [inputPassword, setInputPassword] = useState('');
     const [inputFirstName, setInputFirstName] = useState('');
     const [inputLastName, setInputLastName] = useState('');
@@ -39,6 +40,11 @@ export const RegistrationComponent: React.FC = () => {
                             <Form.Control value={inputEmail} onChange={(e) => setInputEmail(e.target.value)} />
                         </Form.Group>
 
+                        <Form.Group controlId='formUsername'>
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control value={inputUsername} onChange={(e) => setInputUsername(e.target.value)} />
+                        </Form.Group>
+
                         <Form.Group controlId='formPassword'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control value={inputPassword} onChange={(e) => setInputPassword(e.target.value)} />
@@ -53,8 +59,7 @@ export const RegistrationComponent: React.FC = () => {
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control value={inputLastName} onChange={(e) => setInputLastName(e.target.value)} />
                         </Form.Group>
-
-                        <p>role</p>
+                        {/* May put in input for roles in later commits */}
                     </Form>
                     <Button type = "submit" onClick={() => loginCredentials()}>
                         Register
