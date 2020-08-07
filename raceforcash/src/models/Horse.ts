@@ -2,8 +2,8 @@ export interface Horse {
     id: number;
     name: string;
     birthdate: Date;
-    breedId: number;
-    health: string;
+    breedId: string;
+    health: number;
     speed: number;
     wins: number;
     loses: number;
