@@ -1,7 +1,7 @@
 export interface Horse {
     id: number;
     name: string;
-    birthdate: Date;
+    birthdate: Date | string;
     breedId: string;
     health: number;
     speed: number;

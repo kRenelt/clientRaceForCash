@@ -22,7 +22,8 @@ export const MainComponent: React.FC = () => {
                         <Route path="/registration">
                             <RegistrationComponent />
                         </Route>
-                        <Route path='/stable'>
+                        {/* <Route path='/stable'> */}
+                        <Route path='/horses'>
                             <StableComponent />
                         </Route>
                     </Switch>
