@@ -12,19 +12,9 @@ export const RegistrationComponent: React.FC = () => {
     useEffect(() => {
       }, []);
 
-    //   const loginCredentials = async () => {
-        const loginCredentials = () => {
-        const payload = {
-            email: inputEmail, 
-            password: inputPassword
-        };
-        // console.log(payload);
-        // try{
-        //     res = await loginRemote.checkLogin(payload);
-        //     await login();
-        // } catch(err) {
-        //     console.log(err);
-        // }
+          // function where account is registered will be implemented
+          const registerAccount = () => {
+            // onClick should register account
     }
 
     return(
@@ -61,7 +51,7 @@ export const RegistrationComponent: React.FC = () => {
                         </Form.Group>
                         {/* May put in input for roles in later commits */}
                     </Form>
-                    <Button type = "submit" onClick={() => loginCredentials()}>
+                    <Button type = "submit" onClick={() => registerAccount()}>
                         Register
                     </Button>
                 {/* </Col>
