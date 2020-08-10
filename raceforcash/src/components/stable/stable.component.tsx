@@ -36,9 +36,9 @@ export const StableComponent: React.FC = () => {
             Stables
             {allHorses.map(h => {
                 return (
-                    <div className='mainHorseContainer'>
+                    <div className='mainHorseContainer'  key={h.id}>
                         <div className='horseName'>{h.name}</div>
-                        <div className='birthdate'>{h.birthdate}</div>
+                        <div className='health'>{h.health}</div>
                     </div>
                 )
             })}
