@@ -31,7 +31,7 @@ export const LoginComponent: React.FC = () => {
 
         <Form.Group>
             <Form.Label>Password</Form.Label>
-            <Form.Control value={inputPassword} onChange={(e) => setInputPassword(e.target.value)} placeholder="Password" required />
+            <Form.Control type="password" value={inputPassword} onChange={(e) => setInputPassword(e.target.value)} placeholder="Password" required />
         </Form.Group>
 
           <Form.Group className="checkbox mb-3">
