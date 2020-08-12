@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Container, Row, Col, Button } from 'react-bootstrap';
+import * as userRemote from '../../remotes/user.remote';
+import { First } from 'react-bootstrap/esm/PageItem';
 
 export const RegistrationComponent: React.FC = () => {
 
@@ -13,8 +15,26 @@ export const RegistrationComponent: React.FC = () => {
       }, []);
 
           // function where account is registered will be implemented
-          const registerAccount = () => {
-            // onClick should register account
+          const registerAccount = async () => {
+            const response = await userRemote.registerUser({
+                email: inputEmail,
+                username: inputUsername,
+                password: inputPassword,
+                firstName: inputFirstName,
+                lastName: inputLastName
+            });
+            console.log(response);
+            if(response.data.id.toString() && response.data.email && response.data.username &&
+                response.data.password && response.data.firstName && response.data.lastName) {
+
+                    localStorage.setItem('id', response.data.id.toString());
+                    localStorage.setItem('email', response.data.email);
+                    localStorage.setItem('username', response.data.username);
+                    localStorage.setItem('password', response.data.password);
+                    localStorage.setItem('firstName', response.data.firstName);
+                    localStorage.setItem('lastName', response.data.lastName);
+                }
+
     }
 
     return(
@@ -51,7 +71,7 @@ export const RegistrationComponent: React.FC = () => {
                         </Form.Group>
                         {/* May put in input for roles in later commits */}
                     </Form>
-                    <Button type = "submit" onClick={() => registerAccount()}>
+                    <Button type = "submit" onClick={registerAccount}>
                         Register
                     </Button>
                 {/* </Col>

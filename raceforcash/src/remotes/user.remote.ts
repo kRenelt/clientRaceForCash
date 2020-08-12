@@ -10,3 +10,8 @@ export const getUserById = async (id: number) => {
     const response = await internalAxios.get<User>(`/user/${id}`);
     return response;
 }
+
+export const registerUser = async (user: any) => {
+    const response = await internalAxios.put('/register', user);
+    return response;
+}
