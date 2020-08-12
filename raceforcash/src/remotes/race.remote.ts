@@ -10,6 +10,6 @@ export const getAllRaces = async () => {
 }
 
 export const getRaceById = async (id: number) => {
-    const response = await internalAxios.get<Race>(`/races/id/${id}`);
+    const response = await internalAxios.get<Race>(`/races/raceid/${id}`);
     return response.data;
 }
